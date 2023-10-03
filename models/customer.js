@@ -84,11 +84,11 @@ const customerSchema = mongoose.Schema({
     },
     mobileNumber: {
         type: String,
-
+        required: true
     },
     altMobileNumber: {
         type: String,
-        required: true
+        
 
     },
     email: {

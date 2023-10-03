@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-
+const initializeCounter = require('./controllers/counterInitializer');
 const cookiParser = require("cookie-parser")
 const mongoose = require('mongoose')
 
@@ -34,6 +34,8 @@ const DB = async () => {
 }
 
 DB();
+// Initialize Counter
+initializeCounter();
 app.use(express.json())
 
 app.use(cookiParser());

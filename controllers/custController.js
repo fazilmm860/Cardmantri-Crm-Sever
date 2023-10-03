@@ -1,6 +1,6 @@
 
 const custSchema = require('../models/customer')
-
+const Counter = require('../models/counter');
 
 
 
@@ -9,10 +9,13 @@ const postCustomer = async (req, res) => {
 
     try {
      
-        counter++; // Increment the counter
+         // Find and increment the counter
+    const result = await Counter.findOneAndUpdate({}, { $inc: { counter: 1 } }, { new: true, upsert: true });
 
-        const applicationNumber = `CRDM${counter.toString().padStart(3, '0')}`;
+    // Get the updated counter value
+    counter = result.counter;
 
+    const applicationNumber = `CRDM${counter.toString().padStart(3, '0')}`;
 
         const custdetails = new custSchema({
             date: req.body.date,
