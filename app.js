@@ -58,6 +58,12 @@ app.use((req, res, next) => {
 app.use('/api', custdata)
 app.use('/api', loginRouter);
 
+app.get('/',async (req,res)=>{
+    res.json("Crm-CardMantri started")
+})
+app.get('*',(req,res)=>{
+    res.status(404).json("Not founded")
+})
 app.listen(port, () => {
     console.log(`Server connected:->${port}`);
 })   
