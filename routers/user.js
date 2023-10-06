@@ -48,8 +48,10 @@ router.post('/register', async (req, res) => {
         }
 
     } catch (error) {
+        console.log('Error:'+ error);
         return res.status(422).json(error)
-        console.log("catch block error");
+        
+      
 
 
     }
@@ -97,7 +99,7 @@ router.post("/login", async (req, res) => {
 })
 
 //user  valid 
-router.get("/valiuser", authenticate, async (req, res) => {
+router.get("/valdiuser", authenticate, async (req, res) => {
     try {
         const validUserOne = await userdb.findOne({ _id: req.userId });
         return res.status(201).json({ status: 201, validUserOne });
