@@ -15,7 +15,7 @@ const loginRouter = require('./routers/user')
 const app = express();
 
 const DB = async () => {
-    try {
+    try { 
         mongoose.connect(process.env.DB_URL, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
@@ -58,12 +58,12 @@ app.use((req, res, next) => {
 app.use('/api', custdata)
 app.use('/api', loginRouter);
 
-app.get('/',async (req,res)=>{
-    res.json("Crm-CardMantri started")
-})
-app.get('*',(req,res)=>{
-    res.status(404).json("Not founded")
-})
+// app.get('/',async (req,res)=>{
+//     res.json("Crm-CardMantri started")
+// })
+// app.get('*',(req,res)=>{
+//     res.status(404).json("Not founded")
+// })
 app.listen(port, () => {
     console.log(`Server connected:->${port}`);
 })   
